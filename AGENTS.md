@@ -105,6 +105,51 @@ Testes devem cobrir:
 - erros esperados
 - chamadas para dependências quando fizer sentido
 
+## Commits, push e coautoria
+
+A partir desta etapa, cada alteração coerente pode ser commitada e enviada para o repositório.
+
+Regras permanentes:
+- sempre que concluir uma alteração coerente, pode criar um commit
+- pode fazer push da branch atual após o commit
+- não precisa juntar mudanças diferentes no mesmo commit
+- cada commit deve representar um contexto real, como `docs`, `docker`, `config`, `database`, `test`, `feature`, `fix` ou `refactor`
+- antes de commitar, confira se não existem arquivos sensíveis ou locais sendo versionados, como `.env`, logs, `target/`, arquivos temporários ou dados locais
+- se alterar código, rode os testes relevantes antes do commit quando possível
+- se alterar apenas documentação, não precisa rodar a suíte inteira, mas valide se a mudança está coerente
+
+### Padrão de mensagem de commit
+
+As mensagens devem seguir um padrão parecido com Conventional Commits.
+
+Diretrizes:
+- o título do commit deve ser curto e claro
+- o corpo do commit deve explicar objetivamente o que foi alterado
+- quando fizer sentido, use bullets no corpo para detalhar as principais mudanças
+
+Exemplo:
+
+```txt
+chore(docs): documenta padrão de commits e coautoria
+
+- Adiciona regra para commits por alteração coerente
+- Define padrão descritivo para mensagens de commit
+- Documenta uso de coautoria para alterações feitas com Rocket/OpenCode
+- Reforça cuidado com arquivos locais e sensíveis
+
+Co-authored-by: Rocket <rocket@noreply.local>
+```
+
+### Coautoria Rocket/OpenCode
+
+Quando a alteração for feita com apoio do Rocket/OpenCode, incluir no commit:
+
+```txt
+Co-authored-by: Rocket <rocket@noreply.local>
+```
+
+Se no futuro existir um email oficial para Rocket/OpenCode, esse valor poderá substituir o endereço temporário acima.
+
 ## Regra final
 
 Antes de criar código novo, confira se a implementação respeita:
@@ -116,3 +161,4 @@ Antes de criar código novo, confira se a implementação respeita:
 - repository apenas com acesso a banco
 - DTOs separados por função
 - testes unitários para services, mappers e validators
+- padrão de commit, push e coautoria documentado neste arquivo
