@@ -150,6 +150,21 @@ Co-authored-by: Rocket <rocket@noreply.local>
 
 Se no futuro existir um email oficial para Rocket/OpenCode, esse valor poderá substituir o endereço temporário acima.
 
+## Agents e skills auxiliares
+
+Este repositório mantém uma organização experimental em `.opencode/agents/` e `.opencode/skills/` para apoiar o uso do OpenCode/Rocket.
+
+Neste momento, esses arquivos devem ser tratados como documentação operacional de apoio.
+
+Até aqui, não foi detectado neste ambiente um mecanismo local comprovado de carregamento automático desses agents ou skills.
+
+Quando fizer sentido, use como referência:
+- `backend-architect` para revisar arquitetura do backend Spring Boot e responsabilidades entre camadas
+- `database-flyway` para revisar decisões de banco, PostgreSQL e Flyway
+- `test-reviewer` para revisar qualidade e cobertura dos testes
+- `commit-descritivo` antes de criar commits
+- `atualizar-docs` quando a mudança impactar arquitetura, API, banco, Docker, Flyway, testes ou decisões técnicas
+
 ## Regra final
 
 Antes de criar código novo, confira se a implementação respeita:
@@ -162,3 +177,4 @@ Antes de criar código novo, confira se a implementação respeita:
 - DTOs separados por função
 - testes unitários para services, mappers e validators
 - padrão de commit, push e coautoria documentado neste arquivo
+- uso dos agents e skills auxiliares quando eles ajudarem na revisão da mudança

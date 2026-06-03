@@ -102,10 +102,29 @@ Se no futuro existir um email oficial para Rocket/OpenCode, esse valor poderá s
 
 Essa decisão melhora rastreabilidade, reduz acúmulo artificial de mudanças, incentiva histórico mais legível e formaliza a coautoria das alterações feitas com apoio do Rocket/OpenCode.
 
-## Decisão 9 - Escopo desta etapa
+## Decisão 9 - Base técnica inicial da aplicação
 
-Nesta fase serão mantidos apenas organização inicial, documentação e padrões do projeto.
+Nesta fase o projeto passa a manter também a base técnica inicial da aplicação Spring Boot, incluindo build, configuração de ambiente, perfil de testes e integração com PostgreSQL e Flyway.
 
 ### Motivo
 
-A intenção é alinhar estrutura e convenções antes da implementação do CRUD.
+A intenção é alinhar estrutura, convenções e infraestrutura mínima antes da implementação do CRUD.
+
+## Decisão 10 - Organização experimental de agents e skills para OpenCode/Rocket
+
+Foi criada uma organização inicial e simples em `.opencode/agents/` e `.opencode/skills/` para testar o fluxo de agents e skills neste projeto.
+
+Escopo desta decisão:
+- criar poucos arquivos de apoio, sem implementar automações complexas
+- registrar agents focados em arquitetura, banco/Flyway e revisão de testes
+- registrar skills focadas em padrão de commit e atualização de documentação
+- manter esses arquivos como apoio operacional e documentação local
+
+Estado atual observado:
+- não foi detectada neste repositório uma convenção local pré-existente para agents ou skills
+- não foi detectado neste ambiente um mecanismo local comprovado de carregamento automático desses arquivos
+- por isso, a estrutura criada deve ser tratada por enquanto como documentação de apoio para uso com OpenCode/Rocket
+
+### Motivo
+
+Essa decisão permite testar uma organização mínima, explícita e versionada para orientar futuras interações com OpenCode/Rocket, sem acoplar o projeto a uma convenção não comprovada no ambiente atual.
