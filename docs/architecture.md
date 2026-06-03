@@ -74,9 +74,32 @@ Controller não deve conter regra de negócio.
 - não criar pastas vazias sem código real
 - manter código compartilhado apenas em `shared`
 - priorizar nomes explícitos e orientados ao caso de uso
+- usar Flyway como estratégia de versionamento do banco de dados
+- manter migrations em `src/main/resources/db/migration`
+- aplicar alterações estruturais no banco exclusivamente por migration
+- não usar `spring.jpa.hibernate.ddl-auto=create` ou `spring.jpa.hibernate.ddl-auto=update` como estratégia principal
+
+## Estratégia de banco e migrations
+
+O projeto usará Flyway para versionamento do banco de dados.
+
+As migrations deverão ser mantidas em `src/main/resources/db/migration`.
+
+O padrão de nomenclatura esperado para os arquivos será:
+- `V1__descricao_da_migration.sql`
+- `V2__descricao_da_migration.sql`
+
+Diretrizes arquiteturais para persistência:
+- toda alteração estrutural no banco deve ser feita por migration
+- o banco local deve ser provisionado pelo Docker
+- a criação de tabelas em ambiente local deve ser feita pelo Flyway
+- `spring.jpa.hibernate.ddl-auto=create` e `spring.jpa.hibernate.ddl-auto=update` não devem ser usados como estratégia principal
+- o domínio `partituras` já possui a base inicial de persistência com `Partitura`, `NivelPartitura` e `PartituraRepository`
+- a entidade persistida usa `UUID` como identificador primário
+- o campo `nivel` é persistido como texto a partir do enum `NivelPartitura`
 
 ## Observação sobre package base
 
-O projeto atual foi gerado com um package base inicial do Spring Initializr.
+O package base do projeto foi padronizado para `br.com.partiturasapi`.
 
-Antes da implementação do domínio, o package base deve ser ajustado para o padrão definitivo adotado pelo projeto.
+Esse será o ponto de partida para a implementação dos domínios futuros.
