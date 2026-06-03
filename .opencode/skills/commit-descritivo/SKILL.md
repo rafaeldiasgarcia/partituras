@@ -1,3 +1,8 @@
+---
+name: commit-descritivo
+description: usar antes de criar commits para lembrar o padrão de commit adotado no projeto
+---
+
 # commit-descritivo
 
 ## Objetivo

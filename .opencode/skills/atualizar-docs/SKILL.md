@@ -1,3 +1,8 @@
+---
+name: atualizar-docs
+description: usar quando mudanças relevantes exigirem atualização da documentação do projeto
+---
+
 # atualizar-docs
 
 ## Objetivo
