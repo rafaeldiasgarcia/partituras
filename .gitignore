@@ -1,0 +1,48 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### Maven / Build ###
+build/
+.gradle/
+
+### IDEs ###
+.idea/
+.vscode/
+.classpath
+.project
+.settings/
+.factorypath
+.apt_generated
+.springBeans
+.sts4-cache
+*.iml
+*.ipr
+*.iws
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### Logs ###
+*.log
+logs/
+
+### Environment ###
+.env
+.env.*
+*.local
+
+### OS ###
+.DS_Store
+Thumbs.db
+
+### Temporary files ###
+*.tmp
+*.temp
+*.swp
+
+### Project docs generated locally ###
+out/
