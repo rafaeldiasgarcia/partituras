@@ -70,7 +70,7 @@ Alterações estruturais no banco deverão ser feitas por migration.
 
 Em ambiente local, o banco será criado pelo Docker e as tabelas serão criadas pelo Flyway.
 
-A primeira migration real será criada quando a entidade `Partitura` for implementada.
+A base inicial de persistência do domínio `partituras` foi implementada com a entidade `Partitura`, o enum `NivelPartitura`, o `PartituraRepository` e a migration `V1__criar_tabela_partituras.sql`.
 
 ### Motivo
 
