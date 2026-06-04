@@ -27,6 +27,7 @@ import br.com.partiturasapi.partituras.service.CriarPartituraService;
 import br.com.partiturasapi.partituras.service.DetalharPartituraService;
 import br.com.partiturasapi.partituras.service.ExcluirPartituraService;
 import br.com.partiturasapi.partituras.service.ListarPartituraService;
+import br.com.partiturasapi.shared.exception.BusinessException;
 import br.com.partiturasapi.shared.exception.GlobalExceptionHandler;
 import br.com.partiturasapi.shared.exception.ResourceNotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -132,6 +133,20 @@ class PartiturasControllerTest {
         mockMvc.perform(get("/partituras/{id}", PartituraFactory.ID_INEXISTENTE))
             .andExpect(status().isNotFound())
             .andExpect(jsonPath("$.message").value(PartituraFactory.MENSAGEM_PARTITURA_NAO_ENCONTRADA));
+    }
+
+    @Test
+    void deveRetornarConflictQuandoBusinessExceptionForLancada() throws Exception {
+        when(criarPartituraService.criar(any(CriarPartituraRequest.class)))
+            .thenThrow(new BusinessException(PartituraFactory.MENSAGEM_TITULO_OBRIGATORIO));
+
+        mockMvc.perform(post("/partituras")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(PartituraRequestFactory.criarRequest())))
+            .andExpect(status().isConflict())
+            .andExpect(jsonPath("$.message").value(PartituraFactory.MENSAGEM_TITULO_OBRIGATORIO))
+            .andExpect(jsonPath("$.details").isArray())
+            .andExpect(jsonPath("$.details").isEmpty());
     }
 
     @Test
