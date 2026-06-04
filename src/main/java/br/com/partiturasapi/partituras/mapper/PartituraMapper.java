@@ -34,7 +34,7 @@ public class PartituraMapper {
         partitura.setObservacoes(request.observacoes());
     }
 
-    public CriarPartituraResponse toCriarResponse(Partitura partitura) {
+    public CriarPartituraResponse toCriarPartituraResponse(Partitura partitura) {
         return new CriarPartituraResponse(
             partitura.getId(),
             partitura.getTitulo(),
@@ -49,7 +49,7 @@ public class PartituraMapper {
         );
     }
 
-    public AtualizarPartituraResponse toAtualizarResponse(Partitura partitura) {
+    public AtualizarPartituraResponse toAtualizarPartituraResponse(Partitura partitura) {
         return new AtualizarPartituraResponse(
             partitura.getId(),
             partitura.getTitulo(),
@@ -64,7 +64,7 @@ public class PartituraMapper {
         );
     }
 
-    public ListarPartituraResponse toListarResponse(Partitura partitura) {
+    public ListarPartituraResponse toListarPartituraResponse(Partitura partitura) {
         return new ListarPartituraResponse(
             partitura.getId(),
             partitura.getTitulo(),
@@ -79,7 +79,7 @@ public class PartituraMapper {
         );
     }
 
-    public DetalharPartituraResponse toDetalharResponse(Partitura partitura) {
+    public DetalharPartituraResponse toDetalharPartituraResponse(Partitura partitura) {
         return new DetalharPartituraResponse(
             partitura.getId(),
             partitura.getTitulo(),
