@@ -110,25 +110,30 @@ Nesta fase o projeto passa a manter também a base técnica inicial da aplicaç�
 
 A intenção é alinhar estrutura, convenções e infraestrutura mínima antes da implementação do CRUD.
 
-## Decisão 10 - Organização experimental de agents e skills para OpenCode/Rocket
+## Decisão 10 - Organização padrão de agents e skills para OpenCode/Rocket
 
-Foi criada uma organização inicial e simples em `.opencode/agents/` e `.opencode/skills/` para testar o fluxo de agents e skills neste projeto.
+O projeto adota a organização padrão do OpenCode para regras, agents e skills.
 
-Escopo desta decisão:
-- criar poucos arquivos de apoio, sem implementar automações complexas
-- registrar agents focados em arquitetura, banco/Flyway e revisão de testes
-- registrar skills focadas em padrão de commit e atualização de documentação
-- manter esses arquivos como apoio operacional e documentação local
+Estrutura adotada:
+- `AGENTS.md` mantém as regras do projeto
+- `opencode.json` mantém a configuração do projeto
+- `.opencode/agents/*.md` mantém agents customizados em Markdown com frontmatter YAML
+- `.opencode/skills/<nome>/SKILL.md` mantém skills com `name` e `description`
 
-Estado atual observado:
-- não foi detectada neste repositório uma convenção local pré-existente para agents ou skills
-- não foi detectado neste ambiente um mecanismo local comprovado de carregamento automático desses arquivos
-- por isso, a estrutura criada deve ser tratada por enquanto apenas como arquivos experimentais e não obrigatórios
-- esses arquivos não devem ser usados como instrução ativa padrão do projeto enquanto essa diretriz não for revisada
+Agents registrados:
+- `@backend-architect`, para revisão arquitetural Spring Boot
+- `@database-flyway`, para revisão de PostgreSQL, JPA e Flyway
+- `@test-reviewer`, para revisão de testes automatizados
+
+Skills registradas:
+- `atualizar-docs`, para atualização localizada de documentação
+- `commit-descritivo`, para preparação de commits descritivos
+
+Para evitar criação automática e recursiva de subagents, `opencode.json` bloqueia `permission.task` por padrão. Os agents customizados também bloqueiam `task`, `edit` e `bash`, usam `mode: subagent` e têm limite de passos.
 
 ### Motivo
 
-Essa decisão permite testar uma organização mínima, explícita e versionada para orientar futuras interações com OpenCode/Rocket, sem acoplar o projeto a uma convenção não comprovada no ambiente atual.
+Essa decisão mantém agents e skills versionados no padrão do OpenCode, mas evita fan-out automático, subtarefas recursivas e exploração ampla em tarefas simples.
 
 ## Decisão 11 - Modo de trabalho padrão para tarefas pequenas e médias
 
@@ -141,6 +146,8 @@ Diretrizes adotadas:
 - antes de implementar, fazer no máximo um plano curto com 3 a 6 passos
 - não reabrir análise de arquitetura inteira a cada prompt
 - ler somente os arquivos necessários para a tarefa atual
+- carregar skills somente quando a descrição da skill for diretamente relevante
+- usar agents somente quando chamados manualmente ou explicitamente solicitados
 - manter commits descritivos com coautoria do Rocket
 
 ### Motivo

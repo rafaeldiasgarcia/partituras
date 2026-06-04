@@ -1,14 +1,14 @@
 # AGENTS.md - Padrões do projeto
 
-Antes de implementar qualquer funcionalidade, leia este arquivo e a pasta `docs`.
+Antes de implementar qualquer funcionalidade, leia este arquivo. Consulte `docs/` sob demanda, de acordo com a tarefa atual; não leia a pasta inteira por padrão.
 
 ## Objetivo
 
-Este projeto será uma API de CRUD de partituras usando Spring Boot, PostgreSQL e Docker.
+Este projeto é uma API de CRUD de partituras usando Spring Boot, PostgreSQL e Docker.
 
 ## Arquitetura
 
-O backend deve seguir um monolito modular organizado por domínio.
+O backend deve seguir um monólito modular organizado por domínio.
 
 Cada domínio deve concentrar seus próprios controllers, DTOs, mappers, services, validators, entities e repositories.
 
@@ -107,11 +107,10 @@ Testes devem cobrir:
 
 ## Commits, push e coautoria
 
-A partir desta etapa, cada alteração coerente pode ser commitada e enviada para o repositório.
+Cada alteração coerente pode ser commitada e enviada para o repositório quando isso fizer parte da tarefa atual ou tiver sido combinado com o usuário.
 
 Regras permanentes:
-- sempre que concluir uma alteração coerente, pode criar um commit
-- pode fazer push da branch atual após o commit
+- cada commit deve representar uma alteração coerente
 - não precisa juntar mudanças diferentes no mesmo commit
 - cada commit deve representar um contexto real, como `docs`, `docker`, `config`, `database`, `test`, `feature`, `fix` ou `refactor`
 - antes de commitar, confira se não existem arquivos sensíveis ou locais sendo versionados, como `.env`, logs, `target/`, arquivos temporários ou dados locais
@@ -159,17 +158,44 @@ Regras permanentes para execução das tarefas neste projeto:
 - antes de implementar, fazer no máximo um plano curto com 3 a 6 passos
 - não reabrir análise de arquitetura inteira a cada prompt
 - ler somente os arquivos necessários para a tarefa atual
-- manter commits descritivos com coautoria do Rocket
+- carregar skills somente quando a descrição da skill for diretamente relevante
+- manter commits descritivos com coautoria do Rocket quando houver commit
 
-## Agents e skills auxiliares
+## OpenCode
 
-Este repositório mantém uma organização experimental em `.opencode/agents/` e `.opencode/skills/` para apoiar o uso do OpenCode/Rocket.
+Este repositório usa a organização padrão do OpenCode:
+- `AGENTS.md` define as regras do projeto.
+- `opencode.json` fica na raiz do projeto.
+- agents customizados ficam em `.opencode/agents/*.md`.
+- skills ficam em `.opencode/skills/<nome>/SKILL.md`.
 
-Neste momento, esses arquivos devem ser tratados apenas como arquivos experimentais e não obrigatórios.
+Para evitar criação automática e recursiva de subagents, `opencode.json` bloqueia `permission.task` por padrão.
 
-Eles não devem ser usados como instrução ativa padrão do projeto enquanto essa diretriz não for revisada.
+Consequências práticas:
+- não invoque subagents automaticamente para tarefas simples
+- se precisar de uma revisão especializada, o usuário pode chamar manualmente `@backend-architect`, `@database-flyway` ou `@test-reviewer`
+- agents customizados são somente leitura, têm limite de passos e não podem invocar outros agents
+- skills continuam disponíveis sob demanda pela ferramenta `skill`
+- skills não devem disparar subagents nem exploração ampla
 
-Até aqui, não foi detectado neste ambiente um mecanismo local comprovado de carregamento automático desses agents ou skills.
+Skills disponíveis:
+- `atualizar-docs`: use quando mudanças relevantes exigirem atualização de documentação
+- `commit-descritivo`: use antes de criar commits descritivos
+
+Agents disponíveis para chamada manual:
+- `@backend-architect`: revisão arquitetural Spring Boot
+- `@database-flyway`: revisão de PostgreSQL, JPA e Flyway
+- `@test-reviewer`: revisão de testes automatizados
+
+## Referências de documentação
+
+Consulte conforme o tipo de mudança:
+- produto: `docs/product.md`
+- arquitetura: `docs/architecture.md`
+- API: `docs/api-contract.md`
+- testes: `docs/test-strategy.md`
+- decisões técnicas: `docs/decisions.md`
+- visão geral e comandos: `README.md`
 
 ## Regra final
 
@@ -183,4 +209,5 @@ Antes de criar código novo, confira se a implementação respeita:
 - DTOs separados por função
 - testes unitários para services, mappers e validators
 - padrão de commit, push e coautoria documentado neste arquivo
-- uso dos agents e skills auxiliares quando eles ajudarem na revisão da mudança
+- uso de skills somente quando forem diretamente relevantes
+- uso de agents somente quando chamados manualmente ou explicitamente solicitados

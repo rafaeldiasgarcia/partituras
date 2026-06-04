@@ -1,34 +1,46 @@
 ---
 name: commit-descritivo
-description: usar antes de criar commits para lembrar o padrão de commit adotado no projeto
+description: Prepare commits descritivos no padrão do projeto quando o usuário pedir commit ou quando uma alteração coerente estiver pronta para versionamento.
+compatibility: opencode
+metadata:
+  project: partituras
+  workflow: git
 ---
 
 # commit-descritivo
 
-## Objetivo
-
-Lembrar o padrão de commit adotado neste projeto antes de criar commits.
+Use esta skill antes de criar commits neste projeto.
 
 ## Regras principais
 
-- fazer commit por alteração coerente
-- usar título curto e claro
-- escrever corpo explicando as mudanças principais
-- usar bullets quando fizer sentido
-- incluir coautoria quando a alteração for feita com apoio do Rocket/OpenCode
+- Faça commit por alteração coerente.
+- Use título curto, claro e parecido com Conventional Commits.
+- Escreva corpo explicando objetivamente as mudanças principais.
+- Use bullets no corpo quando eles deixarem a mensagem mais legível.
+- Inclua coautoria quando a alteração tiver sido feita com apoio do Rocket/OpenCode.
 
-## Coautoria
+## Fluxo
+
+1. Revise `git status --short`.
+2. Confira o diff dos arquivos que serão commitados.
+3. Garanta que não há arquivos sensíveis ou locais, como `.env`, logs, `target/`, temporários ou dados locais.
+4. Rode os testes relevantes quando houver alteração de código e isso for viável.
+5. Crie uma mensagem com título e corpo coerentes com a mudança.
+
+## Formato sugerido
 
 ```txt
+tipo(escopo): resumo curto da mudança
+
+- Descreve a primeira mudança principal
+- Descreve a segunda mudança principal
+- Registra validações feitas quando relevante
+
 Co-authored-by: Rocket <rocket@noreply.local>
 ```
 
-## Referências do projeto
+## Limites
 
-Consultar:
-- `AGENTS.md`
-- `docs/decisions.md`
-
-## Observação
-
-Até o momento, este arquivo funciona como documentação de apoio para uso no OpenCode/Rocket. Não foi detectado neste repositório um mecanismo local comprovado de carregamento automático dessas skills.
+- Não misture mudanças sem relação no mesmo commit.
+- Não faça push se o usuário não pediu ou se a sessão atual não deixou isso combinado.
+- Não crie subagents ou subtarefas para preparar commit.
