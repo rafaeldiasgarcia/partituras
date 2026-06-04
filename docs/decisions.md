@@ -123,8 +123,26 @@ Escopo desta decisão:
 Estado atual observado:
 - não foi detectada neste repositório uma convenção local pré-existente para agents ou skills
 - não foi detectado neste ambiente um mecanismo local comprovado de carregamento automático desses arquivos
-- por isso, a estrutura criada deve ser tratada por enquanto como documentação de apoio para uso com OpenCode/Rocket
+- por isso, a estrutura criada deve ser tratada por enquanto apenas como arquivos experimentais e não obrigatórios
+- esses arquivos não devem ser usados como instrução ativa padrão do projeto enquanto essa diretriz não for revisada
 
 ### Motivo
 
 Essa decisão permite testar uma organização mínima, explícita e versionada para orientar futuras interações com OpenCode/Rocket, sem acoplar o projeto a uma convenção não comprovada no ambiente atual.
+
+## Decisão 11 - Modo de trabalho padrão para tarefas pequenas e médias
+
+Para tarefas simples, pequenas ou médias, o trabalho deve ser feito diretamente no código, sem criar subagents, subtarefas paralelas ou explorações extensas.
+
+Diretrizes adotadas:
+- não criar subagents, subtarefas paralelas ou explorações extensas para tarefas simples
+- para mudanças pequenas ou médias, trabalhar diretamente no código
+- só fazer exploração ampla quando a tarefa for realmente ambígua, grande ou arriscada
+- antes de implementar, fazer no máximo um plano curto com 3 a 6 passos
+- não reabrir análise de arquitetura inteira a cada prompt
+- ler somente os arquivos necessários para a tarefa atual
+- manter commits descritivos com coautoria do Rocket
+
+### Motivo
+
+Essa decisão reduz overhead operacional, evita análise excessiva em mudanças objetivas, melhora foco na tarefa atual e mantém o histórico de commits claro e rastreável.

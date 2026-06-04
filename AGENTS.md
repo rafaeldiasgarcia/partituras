@@ -150,20 +150,26 @@ Co-authored-by: Rocket <rocket@noreply.local>
 
 Se no futuro existir um email oficial para Rocket/OpenCode, esse valor poderá substituir o endereço temporário acima.
 
+## Modo de trabalho
+
+Regras permanentes para execução das tarefas neste projeto:
+- não criar subagents, subtarefas paralelas ou explorações extensas para tarefas simples
+- para mudanças pequenas ou médias, trabalhar diretamente no código
+- só fazer exploração ampla quando a tarefa for realmente ambígua, grande ou arriscada
+- antes de implementar, fazer no máximo um plano curto com 3 a 6 passos
+- não reabrir análise de arquitetura inteira a cada prompt
+- ler somente os arquivos necessários para a tarefa atual
+- manter commits descritivos com coautoria do Rocket
+
 ## Agents e skills auxiliares
 
 Este repositório mantém uma organização experimental em `.opencode/agents/` e `.opencode/skills/` para apoiar o uso do OpenCode/Rocket.
 
-Neste momento, esses arquivos devem ser tratados como documentação operacional de apoio.
+Neste momento, esses arquivos devem ser tratados apenas como arquivos experimentais e não obrigatórios.
+
+Eles não devem ser usados como instrução ativa padrão do projeto enquanto essa diretriz não for revisada.
 
 Até aqui, não foi detectado neste ambiente um mecanismo local comprovado de carregamento automático desses agents ou skills.
-
-Quando fizer sentido, use como referência:
-- `backend-architect` para revisar arquitetura do backend Spring Boot e responsabilidades entre camadas
-- `database-flyway` para revisar decisões de banco, PostgreSQL e Flyway
-- `test-reviewer` para revisar qualidade e cobertura dos testes
-- `commit-descritivo` antes de criar commits
-- `atualizar-docs` quando a mudança impactar arquitetura, API, banco, Docker, Flyway, testes ou decisões técnicas
 
 ## Regra final
 
