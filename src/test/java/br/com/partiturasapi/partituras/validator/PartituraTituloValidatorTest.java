@@ -20,7 +20,17 @@ class PartituraTituloValidatorTest {
     }
 
     @Test
-    void deveRejeitarPartituraSemTitulo() {
+    void deveRejeitarPartituraComTituloNulo() {
+        Partitura partitura = PartituraFactory.criar();
+        partitura.setTitulo(null);
+
+        assertThatThrownBy(() -> validator.validate(partitura))
+            .isInstanceOf(BusinessException.class)
+            .hasMessage(PartituraFactory.MENSAGEM_TITULO_OBRIGATORIO);
+    }
+
+    @Test
+    void deveRejeitarPartituraComTituloEmBranco() {
         Partitura partitura = PartituraFactory.criarSemTitulo();
 
         assertThatThrownBy(() -> validator.validate(partitura))
