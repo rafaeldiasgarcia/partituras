@@ -49,7 +49,7 @@ class PartituraMapperTest {
     void deveMapearEntityParaCriarResponse() {
         Partitura entity = PartituraFactory.criar();
 
-        var response = mapper.toCriarResponse(entity);
+        var response = mapper.toCriarPartituraResponse(entity);
 
         assertThat(response.id()).isEqualTo(entity.getId());
         assertThat(response.titulo()).isEqualTo(entity.getTitulo());
@@ -60,7 +60,7 @@ class PartituraMapperTest {
     void deveMapearEntityParaAtualizarResponse() {
         Partitura entity = PartituraFactory.criarAtualizada();
 
-        var response = mapper.toAtualizarResponse(entity);
+        var response = mapper.toAtualizarPartituraResponse(entity);
 
         assertThat(response.id()).isEqualTo(entity.getId());
         assertThat(response.titulo()).isEqualTo(entity.getTitulo());
@@ -71,7 +71,7 @@ class PartituraMapperTest {
     void deveMapearEntityParaListarResponse() {
         Partitura entity = PartituraFactory.criar();
 
-        var response = mapper.toListarResponse(entity);
+        var response = mapper.toListarPartituraResponse(entity);
 
         assertThat(response.id()).isEqualTo(entity.getId());
         assertThat(response.compositor()).isEqualTo(entity.getCompositor());
@@ -82,7 +82,7 @@ class PartituraMapperTest {
     void deveMapearEntityParaDetalharResponse() {
         Partitura entity = PartituraFactory.criar();
 
-        var response = mapper.toDetalharResponse(entity);
+        var response = mapper.toDetalharPartituraResponse(entity);
 
         assertThat(response.id()).isEqualTo(entity.getId());
         assertThat(response.tom()).isEqualTo(entity.getTom());
