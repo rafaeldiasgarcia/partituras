@@ -169,11 +169,12 @@ Este repositório usa a organização padrão do OpenCode:
 - agents customizados ficam em `.opencode/agents/*.md`.
 - skills ficam em `.opencode/skills/<nome>/SKILL.md`.
 
-Para evitar criação automática e recursiva de subagents, `opencode.json` bloqueia `permission.task` por padrão.
+Para evitar criação automática e recursiva de subagents, `opencode.json` bloqueia `permission.task` por padrão e libera somente alguns agents especializados com aprovação do usuário.
 
 Consequências práticas:
 - não invoque subagents automaticamente para tarefas simples
-- se precisar de uma revisão especializada, o usuário pode chamar manualmente `@backend-architect`, `@database-flyway` ou `@test-reviewer`
+- se uma revisão especializada for útil, peça aprovação antes de usar `backend-architect`, `database-flyway` ou `test-reviewer`
+- o usuário também pode chamar manualmente `@backend-architect`, `@database-flyway` ou `@test-reviewer`
 - agents customizados são somente leitura, têm limite de passos e não podem invocar outros agents
 - skills continuam disponíveis sob demanda pela ferramenta `skill`
 - skills não devem disparar subagents nem exploração ampla
@@ -182,7 +183,7 @@ Skills disponíveis:
 - `atualizar-docs`: use quando mudanças relevantes exigirem atualização de documentação
 - `commit-descritivo`: use antes de criar commits descritivos
 
-Agents disponíveis para chamada manual:
+Agents disponíveis para chamada manual ou aprovação:
 - `@backend-architect`: revisão arquitetural Spring Boot
 - `@database-flyway`: revisão de PostgreSQL, JPA e Flyway
 - `@test-reviewer`: revisão de testes automatizados
@@ -210,4 +211,4 @@ Antes de criar código novo, confira se a implementação respeita:
 - testes unitários para services, mappers e validators
 - padrão de commit, push e coautoria documentado neste arquivo
 - uso de skills somente quando forem diretamente relevantes
-- uso de agents somente quando chamados manualmente ou explicitamente solicitados
+- uso de agents somente quando chamados manualmente, explicitamente solicitados ou aprovados pelo usuário

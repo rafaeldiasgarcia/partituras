@@ -1,7 +1,12 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "permission": {
-    "task": "deny",
+    "task": {
+      "*": "deny",
+      "backend-architect": "ask",
+      "database-flyway": "ask",
+      "test-reviewer": "ask"
+    },
     "skill": {
       "*": "allow"
     }

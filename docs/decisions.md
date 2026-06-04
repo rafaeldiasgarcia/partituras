@@ -129,7 +129,7 @@ Skills registradas:
 - `atualizar-docs`, para atualização localizada de documentação
 - `commit-descritivo`, para preparação de commits descritivos
 
-Para evitar criação automática e recursiva de subagents, `opencode.json` bloqueia `permission.task` por padrão. Os agents customizados também bloqueiam `task`, `edit` e `bash`, usam `mode: subagent` e têm limite de passos.
+Para evitar criação automática e recursiva de subagents, `opencode.json` bloqueia `permission.task` por padrão e libera apenas `backend-architect`, `database-flyway` e `test-reviewer` com `ask`. Os agents customizados também bloqueiam `task`, `edit` e `bash`, usam `mode: subagent` e têm limite de passos.
 
 ### Motivo
 
@@ -147,7 +147,7 @@ Diretrizes adotadas:
 - não reabrir análise de arquitetura inteira a cada prompt
 - ler somente os arquivos necessários para a tarefa atual
 - carregar skills somente quando a descrição da skill for diretamente relevante
-- usar agents somente quando chamados manualmente ou explicitamente solicitados
+- usar agents somente quando chamados manualmente, explicitamente solicitados ou aprovados pelo usuário
 - manter commits descritivos com coautoria do Rocket
 
 ### Motivo
