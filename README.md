@@ -193,10 +193,29 @@ A aplicação sobe por padrão na porta `8080`.
 ### Windows PowerShell
 
 ```powershell
-.\mvnw.cmd test
+.\\mvnw.cmd test
 ```
 
 Os testes usam o perfil `test`.
+
+## Coverage com JaCoCo
+
+A forma padrão do projeto para visualizar coverage é o relatório HTML gerado pelo JaCoCo.
+
+### Windows PowerShell
+
+Para rodar os testes com coverage no Windows, execute:
+
+```powershell
+.\\mvnw.cmd test
+```
+
+Ao final da execução, abra o relatório HTML em:
+
+- `target/site/jacoco/index.html`
+
+Você pode abrir esse arquivo diretamente no navegador para inspecionar a cobertura por pacote, classe, método e linha.
+
 
 ## Estratégia de migrations com Flyway
 

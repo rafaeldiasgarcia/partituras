@@ -53,7 +53,28 @@ Devem ser adicionados em etapa posterior para validar:
 - JUnit 5
 - Mockito
 - Spring Boot Test
+- JaCoCo para relatório HTML de coverage
 - perfil `test` com H2 em memória
+
+## Coverage padrão do projeto
+
+A forma padrão do projeto para visualizar coverage é o relatório HTML gerado pelo JaCoCo.
+
+### Como rodar no Windows
+
+Para executar os testes com coverage no Windows PowerShell, use:
+
+```powershell
+.\\mvnw.cmd test
+```
+
+### Onde abrir o relatório HTML
+
+Após a execução dos testes, o relatório deve estar disponível em:
+
+- `target/site/jacoco/index.html`
+
+Abra esse arquivo no navegador para consultar a cobertura consolidada do projeto.
 
 ## Diretrizes
 
