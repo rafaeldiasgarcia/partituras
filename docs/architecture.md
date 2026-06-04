@@ -48,11 +48,20 @@ src/main/java/br/com/partiturasapi/
 Controller não deve conter regra de negócio.
 
 ### Service
-- coordenar o caso de uso
+- coordenar um único caso de uso
 - chamar validators
 - interagir com repositories
 - usar mappers
 - definir o fluxo da funcionalidade
+
+Para o domínio `partituras`, a organização atual dos casos de uso em services separados é:
+- `CriarPartituraService`
+- `ListarPartituraService`
+- `DetalharPartituraService`
+- `AtualizarPartituraService`
+- `ExcluirPartituraService`
+
+Nesta etapa, o domínio ainda não expõe controller. Os services já representam a camada de aplicação que será delegada pelos endpoints futuros.
 
 ### Validator
 - aplicar validações de negócio
